@@ -1,5 +1,6 @@
-import {} from './Categoria.service'
-import {} from './Categoria.controller'
+import {CategoriaService} from './Categoria.service'
+import {CategoriaController} from './Categoria.controller'
+import { Module } from '@nestjs/common'
 
 @Module({
     imports: [],
