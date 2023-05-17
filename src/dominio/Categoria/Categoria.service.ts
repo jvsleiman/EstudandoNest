@@ -2,7 +2,10 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class CategoriaService{
-    getCategorias(): string{
-        return 'Lista de Categorias'; 
-    }
+    async getCategorias(){
+        return {status:'Lista de Categorias'}
+  }
+async postCategoria(dadosCategoria){
+    return dadosCategoria; 
+}
 }
