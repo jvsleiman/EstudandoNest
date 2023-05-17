@@ -1,4 +1,7 @@
-export class CategoriaRepositorio{
+import { Injectable } from "@nestjs/common/";
+
+@Injectable()
+export class categoriaRepository{
     private categoria = []; 
 
     async salvar(categoria){
@@ -7,9 +10,5 @@ export class CategoriaRepositorio{
 
     async listar(){
         return this.categoria;
-    }
-    
-    async listarUm(chave){
-        return this.categoria[chave];
     }
 }

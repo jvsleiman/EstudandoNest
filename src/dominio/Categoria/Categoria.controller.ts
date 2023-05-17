@@ -1,33 +1,21 @@
-import { CategoriaService } from './Categoria.service'
+
 import { Controller,Get,Post,Put,Delete, Body } from '@nestjs/common/decorators'
-import { CategoriaRepositorio } from './CategoriaRepositorio';
+import { categoriaRepository } from './Categoria.repository';
 
 
 @Controller('categorias')
 export class CategoriaController{
-    constructor(private readonly categoriaService: CategoriaService){}
-
-    private categoriaRepositorio = new CategoriaRepositorio(); 
-
-    @Get('procurar')
-    async getCategoria(chave){
-        if(chave == null){
-            return 'Chave inválida';
-        } else {
-            return this.categoriaRepositorio.listarUm(chave);
-        }
-    }
+    constructor(private categoriaRepository: categoriaRepository){}
 
     @Get()
     async getCategorias(){
-        return this.categoriaRepositorio.listar();
+        return this.categoriaRepository.listar();
         
     }
 
     @Post()
     async postCategoria(@Body() dadosCategoria){
-            this.categoriaRepositorio.salvar(dadosCategoria);
-            return this.categoriaService.postCategoria(dadosCategoria); 
+            return this.categoriaRepository.salvar(dadosCategoria); 
         }
     
 }
