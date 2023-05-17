@@ -9,14 +9,25 @@ export class CategoriaController{
 
     private categoriaRepositorio = new CategoriaRepositorio(); 
 
-@Get()
-async getCategorias(){
-    return this.categoriaRepositorio.listar(); 
-}
-
-@Post()
-async postCategoria(@Body() dadosCategoria){
-        this.categoriaRepositorio.salvar(dadosCategoria);
-        return this.categoriaService.postCategoria(dadosCategoria); 
+    @Get('procurar')
+    async getCategoria(chave){
+        if(chave == null){
+            return 'Chave inválida';
+        } else {
+            return this.categoriaRepositorio.listarUm(chave);
+        }
     }
+
+    @Get()
+    async getCategorias(){
+        return this.categoriaRepositorio.listar();
+        
+    }
+
+    @Post()
+    async postCategoria(@Body() dadosCategoria){
+            this.categoriaRepositorio.salvar(dadosCategoria);
+            return this.categoriaService.postCategoria(dadosCategoria); 
+        }
+    
 }

@@ -8,4 +8,8 @@ export class CategoriaRepositorio{
     async listar(){
         return this.categoria;
     }
+    
+    async listarUm(chave){
+        return this.categoria[chave];
+    }
 }
